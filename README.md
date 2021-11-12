@@ -1,0 +1,2 @@
+# LQ
+Projeto Bootcamp Elogroup
