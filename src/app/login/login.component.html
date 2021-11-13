@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <header class="menu-principal">
+    <div class="header-1">
+      <div class="logoLQ">
+        <img alt="Logo LQ" src="../assets/imgs/LogoLQ.png" height="300" width="290" />
+      </div>
+    </div>
+  </header>
+  <div class="usuario">
+    <input [(ngModel)]="usuario.nome" id="usuario" class="validate" placeholder="usuario" type="text" />
+    <label class="active" for="usuario"></label>
+  </div>
+  <div class="senha">
+    <input [(ngModel)]="usuario.senha" id="Password" class="validate" placeholder="Senha" type="password" />
+    <label class="active" for="usuario"></label>
+  </div>
+  <div class="button">
+    <button type="submit" name="action" value="Login" (click)="fazerLogin()">Login</button>
+    <button type="submit" name="action" value="Registrar" routerLink="/registro" >Registrar</button>
+  </div>
+</body>
+</html>
