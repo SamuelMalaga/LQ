@@ -17,19 +17,22 @@ const routes: Routes = [
   },
   {
     path: 'materias',
-    component: MateriasComponent
+    component: MateriasComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'registro',
-    component: RegistroComponent,
+    component: RegistroComponent
   },
   {
     path: 'perfil',
     component: PerfilComponent,
+    canActivate: [AuthGuard],
   }
 
 

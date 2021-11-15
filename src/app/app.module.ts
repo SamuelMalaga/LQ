@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, FormGroup, FormControl } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule, routing } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +17,9 @@ import { RegistroComponent } from './registro/registro.component';
 import { AuthService } from './login/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { FormtemplateComponent } from './formtemplate/formtemplate.component';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { FormDebugComponent } from './form-debug/form-debug.component';
+import { DataFormModule } from './data-form/data-form.module';
 
 
 
@@ -33,11 +37,14 @@ import { HomeComponent } from './home/home.component'
     RegistroComponent,
     FormtemplateComponent,
     HomeComponent,
+    FormDebugComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
+    DataFormModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
