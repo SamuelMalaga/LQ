@@ -1,37 +1,17 @@
 {
-  "cursos": [
+  "posts": [
     {
       "id": 1,
-      "title": "Curso Teste",
+      "title": "json-server",
       "author": "typicode"
-    },
-    {
-      "title": "Curso Teste 1",
-      "author": "typicode",
-      "id": 2
-    },
-    {
-      "title": "Curso Teste 2",
-      "author": "typicode",
-      "id": 3
     }
   ],
-  "alunos": [
+  "comments": [
     {
-      "email": "Curso Teste 2",
-      "nome": "typicode",
-      "senha": "123456",
-      "senhaRepeat": "123456",
-      "id": 1
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
     }
-  ]
+  ],
+  "profile": {}
 }

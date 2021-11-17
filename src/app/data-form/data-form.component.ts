@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
-import { ConfirmedValidator } from './ConfirmedValidator';
 
 @Component({
   selector: 'app-data-form',
@@ -12,8 +11,6 @@ import { ConfirmedValidator } from './ConfirmedValidator';
 export class DataFormComponent implements OnInit {
 
   formulario!: FormGroup;
-
-  private readonly API = 'http://localhost:3000/alunos'
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,26 +22,23 @@ export class DataFormComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
       email: [null, [Validators.required, Validators.email]],
-      senha: [null, [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]],
-      senhaRepeat: [null, Validators.required]
-    }, { validator: ConfirmedValidator('senha', 'senhaRepeat') });
+      idade: [null, [Validators.required]],
+      senha: [null, Validators.required]
+    })
 
   }
-  get f() {
-    return this.formulario.controls;
-  }
-
-
 
   onSubmit() {
-    console.log(this.formulario);
-    this.http.post('http://localhost:3000/alunos', JSON.stringify(this.formulario.value))
+    console.log(this.formulario.value);
+    this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
       .pipe(map(res => res))
       .subscribe((dados: any) => {
+        console.log(dados);
         //reset form
         this.resetar();
       },
-        (error: any) => alert('erro'));     
+        (error: any) => alert('erro'));
+      
   }
   resetar() {
     this.formulario.reset()
