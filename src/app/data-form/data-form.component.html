@@ -1,26 +1,29 @@
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-  <div class="form-group" [ngClass]="aplicaCssErro('email')">
+  <div class="form-group">
     <label for="email"></label>
     <input type="email" id="email" formControlName="email" placeholder="Coloque seu email"
            class="form-control" />
+    <span *ngIf="formulario.controls.email.errors">Campo Obrigatório </span>
   </div>
-  <div class="form-group" [ngClass]="aplicaCssErro('nome')">
+  <div class="form-group">
     <label for="nome"></label>
     <input type="text" id="nome" formControlName="nome" placeholder="Coloque seu nome"
            class="form-control" />
+    <span *ngIf="formulario.controls.nome.errors">Campo Obrigatório </span>
   </div>
-  <div class="form-group" [ngClass]="aplicaCssErro('idade')">
-    <label for="idade"></label>
-    <input type="number" id="idade" formControlName="idade" placeholder="Coloque sua idade"
-           class="form-control" />
-  </div>
-  <div class="form-group" [ngClass]="aplicaCssErro('senha')">
+  <div class="form-group">
     <label for="senha"></label>
     <input type="password" id="senha" formControlName="senha" placeholder="Coloque sua senha"
            class="form-control" />
+    <span *ngIf="formulario.controls.senha.errors">A senha precisa conter no mínimo: 1 letra maiuscula,1 caractére especial e um simbolo especial </span>
   </div>
-
-  <input type="submit" nome="acao" value="Criar Conta" />
+  <div class="form-group">
+    <label for="senhaRepeat"></label>
+    <input type="password" id="senhaRepeat" formControlName="senhaRepeat" placeholder="Repita sua senha"
+           class="form-control" />
+    <span *ngIf="formulario.controls.senhaRepeat.errors">As senhas precisa ser iguais </span>
+  </div>
+  <input type="submit" nome="acao" value="Criar Conta" [disabled]="!formulario.valid" />
   <input type="submit" nome="acao" value="Resetar dados" (onClick)="resetar()" />
 
 </form>

@@ -22,7 +22,6 @@ export class AuthService {
 
       this.mostrarMenuEmitter.emit(true);
 
-
       this.router.navigate(['/home'])
 
 

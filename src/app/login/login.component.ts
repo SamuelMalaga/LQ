@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { RouterModule, Routes, Router } from '@angular/router';
-import { from } from 'rxjs';
-import { FeedComponent } from '../feed/feed.component';
+
 import { AuthService } from './auth.service';
 import { Usuario } from './usuario';
+
 
 @Component({
   selector: 'app-login',
@@ -15,16 +15,14 @@ export class LoginComponent implements OnInit {
 
   public usuario: Usuario = new Usuario();
 
-
-
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   fazerLogin() {
-    // console.log(this.usuario);
-    this.authService.fazerLogin(this.usuario);
+     //console.log(this.usuario);
+     this.authService.fazerLogin(this.usuario);
 
   }
   }
