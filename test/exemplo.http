@@ -1,0 +1,10 @@
+#Faz o login do usuario
+
+post http://localhotst:3000/cursos
+Content-Type: application/json
+
+{
+      "id": 1,
+      "title": "Curso Teste",
+      "author": "typicode"
+}

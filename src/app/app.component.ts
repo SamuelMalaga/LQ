@@ -9,14 +9,13 @@ import { AuthService } from './login/auth.service';
 export class AppComponent {
   title = 'LearningQ';
 
-  mostrarMenu: boolean = false;
 
-  constructor(private authService: AuthService) {
+  constructor() {
 
   }
 
   ngOnInit() {
-    
-    ;
+
+
   }
 }
