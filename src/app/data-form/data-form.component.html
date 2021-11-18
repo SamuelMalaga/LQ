@@ -3,25 +3,41 @@
     <label for="email"></label>
     <input type="email" id="email" formControlName="email" placeholder="Coloque seu email"
            class="form-control" />
-    <span *ngIf="formulario.controls.email.errors">Campo Obrigatório </span>
+    <span *ngIf="formulario.controls.email.errors">
+      <div id="passwordHelpBlock" class="form-text">
+        Campo Obrigatório
+      </div>
+    </span>
   </div>
   <div class="form-group">
     <label for="nome"></label>
     <input type="text" id="nome" formControlName="nome" placeholder="Coloque seu nome"
            class="form-control" />
-    <span *ngIf="formulario.controls.nome.errors">Campo Obrigatório </span>
+    <span *ngIf="formulario.controls.nome.errors">
+      <div id="passwordHelpBlock" class="form-text">
+        Campo Obrigatório
+      </div>
+    </span>
   </div>
   <div class="form-group">
     <label for="senha"></label>
     <input type="password" id="senha" formControlName="senha" placeholder="Coloque sua senha"
            class="form-control" />
-    <span *ngIf="formulario.controls.senha.errors">A senha precisa conter no mínimo: 1 letra maiuscula,1 caractére especial e um simbolo especial </span>
+    <span *ngIf="formulario.controls.senha.errors">
+      <div id="passwordHelpBlock" class="form-text">
+        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+      </div>
+    </span>
   </div>
   <div class="form-group">
     <label for="senhaRepeat"></label>
     <input type="password" id="senhaRepeat" formControlName="senhaRepeat" placeholder="Repita sua senha"
            class="form-control" />
-    <span *ngIf="formulario.controls.senhaRepeat.errors">As senhas precisa ser iguais </span>
+    <span *ngIf="formulario.controls.senhaRepeat.errors">
+      <div id="passwordHelpBlock" class="form-text">
+        As senhas precisam ser iguais
+      </div>
+    </span>
   </div>
   <input type="submit" nome="acao" value="Criar Conta" [disabled]="!formulario.valid" />
   <input type="submit" nome="acao" value="Resetar dados" (onClick)="resetar()" />

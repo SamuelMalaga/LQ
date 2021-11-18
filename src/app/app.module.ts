@@ -20,6 +20,9 @@ import { FormtemplateComponent } from './formtemplate/formtemplate.component';
 import { HomeComponent } from './home/home.component';
 import { FormDebugComponent } from './form-debug/form-debug.component';
 import { DataFormModule } from './data-form/data-form.module';
+import { MateriaModule } from './materia/materia.module';
+import { MateriasFormComponent } from './materia/materias-form/materias-form.component';
+import { MateriasCadastroComponent } from './materias-cadastro/materias-cadastro.component';
 
 
 
@@ -38,13 +41,15 @@ import { DataFormModule } from './data-form/data-form.module';
     FormtemplateComponent,
     HomeComponent,
     FormDebugComponent,
+    MateriasCadastroComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    DataFormModule
+    DataFormModule,
+    MateriaModule,
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
@@ -59,6 +64,7 @@ import { DataFormModule } from './data-form/data-form.module';
     RegistroComponent,
     FormtemplateComponent,
     HomeComponent,
+    MateriasFormComponent
   ]
 })
 export class AppModule { }

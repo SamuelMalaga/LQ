@@ -1,0 +1,48 @@
+<div class="card text-center" style="position:absolute; top:40%; left:10%; right:10%">
+  <div class="card-header">
+    <div class="float-left">
+      <h4>Matérias</h4>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-primary" (click)="onRefresh()">Atualizar</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="materias$ | async as materias; else loadingError">
+      <thead>
+        <tr>
+          <th>Numero da matéria</th>
+          <th>Matérias</th>
+          <th>Professor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let materia of materias">
+          <td>{{materia.id}}</td>
+          <td>{{materia.title}}</td>
+          <td>{{materia.author}}</td>
+          <td>
+            <span class="float-right">
+              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(materia.id)">
+                Atualizar
+              </button>
+              <button class="btn btn-outline-danger mb-1 btn-sm">
+                Remover
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #loadingError>
+      <div *ngIf="error$ | async; else loading">
+        Erro ao carregar as matérias. Tente novamente mais tarde
+      </div>
+      <ng-template #loading>
+        <span> Carregando Cursos ...</span>
+      </ng-template>
+
+    </ng-template>
+  </div>
+</div>

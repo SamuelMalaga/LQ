@@ -14,6 +14,26 @@
       "title": "Curso Teste 2",
       "author": "typicode",
       "id": 3
+    },
+    {
+      "title": "Curso Teste 3",
+      "author": "nusay",
+      "id": 4
+    },
+    {
+      "title": "Geografia",
+      "author": "Carlos",
+      "id": 5
+    },
+    {
+      "title": "Matematica",
+      "author": "Maicon",
+      "id": 6
+    },
+    {
+      "title": "Abuble",
+      "author": "SAamre",
+      "id": 7
     }
   ],
   "alunos": [
@@ -32,6 +52,12 @@
     },
     {
       "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
     }
   ]
 }

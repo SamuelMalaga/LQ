@@ -9,6 +9,8 @@ import { MateriasComponent } from './materias/materias.component';
 import { RegistroComponent } from './registro/registro.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AuthGuard } from './guard/auth.guard'
+import { MateriasFormComponent } from './materia/materias-form/materias-form.component';
+import { MateriasCadastroComponent } from './materias-cadastro/materias-cadastro.component';
 
 const routes: Routes = [
   {
@@ -17,13 +19,15 @@ const routes: Routes = [
   },
   {
     path: 'materias',
-    component: MateriasComponent,
-    canActivate: [AuthGuard],
+    component: MateriasComponent
+    //,
+   // canActivate: [AuthGuard],
   },
   {
     path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard],
+    component: HomeComponent
+    //,
+    //canActivate: [AuthGuard],
   },
   {
     path: 'registro',
@@ -31,8 +35,21 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    component: PerfilComponent,
-    canActivate: [AuthGuard],
+    component: PerfilComponent
+    //,
+    //canActivate: [AuthGuard],
+  },
+  {
+    path: 'cadastroMateria',
+    component: MateriasCadastroComponent,
+    //,
+    //canActivate: [AuthGuard],
+  },
+  {
+    path: 'materias/editar/:id',
+    component: MateriasFormComponent,
+    //,
+    //canActivate: [AuthGuard],
   }
 
 

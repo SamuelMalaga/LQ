@@ -16,7 +16,7 @@ export class AuthService {
   fazerLogin(usuario: Usuario) {
 
     if (usuario.nome === 'usuario@email.com' &&
-      usuario.senha === '123456') {
+      usuario.senha === 'Oitoletr1*') {
 
       this.usuarioAutenticado = true;
 
