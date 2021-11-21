@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
+
+import { switchMap, map } from 'rxjs/operators';
+
+
+
 import { MateriasService } from '../materias.service';
 
 
@@ -22,21 +28,30 @@ export class MateriasFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.params.subscribe(
-      (params: any) => {
-        const id = params['id'];
-        console.log(id);
-        const materia = this.service.loadByID(id);
-        materia.subscribe(materia => {
-          this.updateForm(materia);
-        });
-      }
-    )
+    //this.route.params.subscribe(
+    //  (params: any) => {
+    //    const id = params['id'];
+    //    console.log(id);
+    //    const materia$ = this.service.loadByID(id);
+    //    materia$.subscribe(materia => {
+    //      this.updateForm(materia);
+    //    });
+    //  }
+    //);
+
+
+    this.route.params
+    .pipe(
+    map((params: any) => params['id']),
+    switchMap(id => this.service.loadByID(id)))
+    .subscribe(materia => this.updateForm(materia));
+
+    const materia = this.route.snapshot.data['materia'];
 
     this.form = this.fb.group({
-      id: [null],
-      title: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(256)]],
-      author: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(256)]],
+      id: [materia.id],
+      title: [materia.title, [Validators.required, Validators.minLength(3), Validators.maxLength(256)]],
+      author: [materia.author, [Validators.required, Validators.minLength(3), Validators.maxLength(256)]],
     });
 
   }
@@ -58,11 +73,11 @@ export class MateriasFormComponent implements OnInit {
     console.log(this.form.value)
     if (this.form.valid) {
       console.log('submit');
-      this.service.create(this.form.value).subscribe();
+
+      this.service.save(this.form.value).subscribe();
+
     }
-  }
-
-
+  };
   onCancel() {
     this.submitted = false;
     this.form.reset();

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
+
+
 import { ConfirmedValidator } from './ConfirmedValidator';
+import { AlunoCadastroService } from './aluno-cadastro.service'
 
 @Component({
   selector: 'app-data-form',
@@ -18,6 +21,8 @@ export class DataFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
+    private service: AlunoCadastroService
+    ,
   ) { }
 
   ngOnInit(): void {
@@ -34,25 +39,34 @@ export class DataFormComponent implements OnInit {
     return this.formulario.controls;
   }
 
-
-
+//  onSubmit() {
+//    console.log(this.formulario.value)
+//    if (this.formulario.valid) {
+//      console.log('submit');
+//      this.service.create(this.form.value).subscribe();
+//    }
+//    },
+//        (error: any) => alert('erro'));
+//}}
+  //create(materia: any) {
+  //  return this.httpClient.post(`${this.API}`, materia).pipe(take(1));
+  //}
   onSubmit() {
-    console.log(this.formulario);
-    this.http.post(this.API, JSON.stringify(this.formulario.value))
-      .pipe(map(res => res))
-      .subscribe((dados: any) => {
-        //reset form
-        this.resetar();
-      },
-        (error: any) => alert('erro'));     
-  };
+    console.log(this.formulario.value)
+    if (this.formulario.valid) {
+      console.log('submit');
+      this.service.create(this.formulario.value).subscribe();
+      this.formulario.reset();
+    }
+  }
+
+
   resetar() {
+    console.log('resetado');
     this.formulario.reset()
   }
   verificaValidTouched(campo: any) {
-
     return !this.formulario.get(campo)?.valid && !this.formulario.get(campo)?.touched;
-
   }
   aplicaCssErro(campo: any) {
     return {

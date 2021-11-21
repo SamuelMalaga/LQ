@@ -3,11 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
 
 import { empty, Observable, Subject } from 'rxjs';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { catchError } from 'rxjs/operators';
-
 
 import { MateriasService } from '../materias.service';
 import { Materia } from '../materia';
+import { AlertModalComponent } from '../../shared/alert-modal/alert-modal.component';
+import { AlertModalService } from '../../shared/alert-modal.service';
+
+
 
 
 
@@ -19,8 +23,7 @@ import { Materia } from '../materia';
 })
 export class MateriasListaComponent implements OnInit {
 
-  //materias: Materia[] = [];
-
+  bsModalRef!: BsModalRef;
   materias$!: Observable<Materia[]>;
   error$ = new Subject <boolean>();
 
@@ -29,7 +32,8 @@ export class MateriasListaComponent implements OnInit {
     private http: HttpClient,
     private service: MateriasService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertService: AlertModalService
   ) { }
 
   ngOnInit(): void {
@@ -37,12 +41,16 @@ export class MateriasListaComponent implements OnInit {
     this.onRefresh();
 
   }
+  handleError() {
+    this.alertService.showAlertDanger('Erro ao carregar as Matérias, tente novamente mais tarde.');
+  }
   onRefresh() {
     this.materias$ = this.service.list()
       .pipe(
         catchError(error => {
           console.error(error);
-          this.error$.next(true);
+          /*          this.error$.next(true);*/
+          this.handleError();
           return empty();
         })
       );

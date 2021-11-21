@@ -11,6 +11,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { AuthGuard } from './guard/auth.guard'
 import { MateriasFormComponent } from './materia/materias-form/materias-form.component';
 import { MateriasCadastroComponent } from './materias-cadastro/materias-cadastro.component';
+import { MateriaResolverGuard } from './materia/guards/materia-resolver.guard';
 
 const routes: Routes = [
   {
@@ -42,12 +43,18 @@ const routes: Routes = [
   {
     path: 'cadastroMateria',
     component: MateriasCadastroComponent,
+    resolve: {
+      materia: MateriaResolverGuard
+    }
     //,
     //canActivate: [AuthGuard],
   },
   {
     path: 'materias/editar/:id',
     component: MateriasFormComponent,
+    resolve: {
+      materia: MateriaResolverGuard
+    }
     //,
     //canActivate: [AuthGuard],
   }
