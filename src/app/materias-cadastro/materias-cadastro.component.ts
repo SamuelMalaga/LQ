@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MateriaModule } from '../materia/materia.module';
 
 @Component({
   selector: 'app-materias-cadastro',

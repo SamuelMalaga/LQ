@@ -8,7 +8,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppRoutingModule, routing } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LQbannerComponent } from './lqbanner/lqbanner.component';
 import { LoginComponent } from './login/login.component';
 import { MateriasComponent } from './materias/materias.component';
 import { PerfilComponent } from './perfil/perfil.component';
@@ -28,7 +27,6 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    LQbannerComponent,
     LoginComponent,
     MateriasComponent,
     PerfilComponent,
@@ -49,7 +47,6 @@ import { SharedModule } from './shared/shared.module';
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
   exports: [
-    LQbannerComponent,
     LoginComponent,
     MateriasComponent,
     PerfilComponent,

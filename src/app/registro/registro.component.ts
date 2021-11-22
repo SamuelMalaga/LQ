@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
-import { DataFormModule } from '../data-form/data-form.module';
+
 
 @Component({
   selector: 'app-registro',
