@@ -26,9 +26,10 @@
               <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(materia.id)">
                 Atualizar
               </button>
-              <button class="btn btn-outline-danger mb-1 btn-sm">
+              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(materia)">
                 Remover
               </button>
+              <button class="btn btn-outline-success mb-1 btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Mostrar Conteúdo</button>
             </span>
           </td>
         </tr>
@@ -45,3 +46,10 @@
     </ng-template>
   </div>
 </div>
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza de que quer deletar essa matéria?</p>
+    <button type="button" class="btn btn-default" (click)="onConfirmDelete()">Sim </button>
+    <button type="button" class="btn btn-primary" (click)="onDeclineDelete()" >Não</button>
+  </div>
+</ng-template>

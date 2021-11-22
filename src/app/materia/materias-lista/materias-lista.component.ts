@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
 
 import { empty, Observable, Subject } from 'rxjs';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { catchError } from 'rxjs/operators';
 
 import { MateriasService } from '../materias.service';
 import { Materia } from '../materia';
-import { AlertModalComponent } from '../../shared/alert-modal/alert-modal.component';
 import { AlertModalService } from '../../shared/alert-modal.service';
 
 
@@ -23,12 +22,15 @@ import { AlertModalService } from '../../shared/alert-modal.service';
 })
 export class MateriasListaComponent implements OnInit {
 
-  bsModalRef!: BsModalRef;
+  @ViewChild('deleteModal') deleteModal: any;
+  deleteModalRef!: BsModalRef;
   materias$!: Observable<Materia[]>;
-  error$ = new Subject <boolean>();
+  error$ = new Subject<boolean>();
+  materiaSelecionada!: Materia;
 
 
   constructor(
+    private modalservice: BsModalService,
     private http: HttpClient,
     private service: MateriasService,
     private router: Router,
@@ -37,9 +39,7 @@ export class MateriasListaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.service.list().subscribe(dados => this.materias = dados);
     this.onRefresh();
-
   }
   handleError() {
     this.alertService.showAlertDanger('Erro ao carregar as Matérias, tente novamente mais tarde.');
@@ -49,7 +49,6 @@ export class MateriasListaComponent implements OnInit {
       .pipe(
         catchError(error => {
           console.error(error);
-          /*          this.error$.next(true);*/
           this.handleError();
           return empty();
         })
@@ -59,5 +58,22 @@ export class MateriasListaComponent implements OnInit {
   onEdit(id: any) {
     this.router.navigate(['editar', id], { relativeTo: this.route })
   }
-
+  onDelete(materia: any) {
+    this.materiaSelecionada = materia;
+    this.deleteModalRef = this.modalservice.show(this.deleteModal, { class: 'modal-sm' });
+  }
+  onConfirmDelete() {
+    this.service.remove(this.materiaSelecionada.id)
+      .subscribe(
+        sucess => {
+          this.onRefresh();
+          this.deleteModalRef.hide();
+          this.alertService.showAlertSucess('Matéria deletada com sucesso!')
+        },
+        error => this.alertService.showAlertDanger('Erro ao Deletar a Matéria, tente novamente mais tarde.')
+      );
+  }
+  onDeclineDelete() {
+    this.deleteModalRef.hide();
+  }
 }

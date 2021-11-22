@@ -2,15 +2,6 @@
   <label for="title" class="form-label">Nome da Matéria</label>
   <input type="text" id="title" class="form-control"
          formControlName="title" placeholder="Materia" [ngClass]="{'is-invalid': submitted && hasError('title')}">
-  <!--<div class="invalid-feedback" *ngIf="hasError('title') && hasError('title')['required']">
-    Por favor, informe o nome da materia
-  </div>
-  <div class="invalid-feedback" *ngIf="hasError('title') && hasError('title')['minLength']">
-    O nome da matéria precisa ter no mínimo 3 letras
-  </div>
-  <div class="invalid-feedback" *ngIf="hasError?('title') && hasError?('title')['maxLength']">
-    O nome da matéria pode ter no máximo 3 letras
-  </div>-->
   <label for="author" class="form-label">Professor da Matéria</label>
   <input type="text" id="author" class="form-control"
          formControlName="author" placeholder="Professor" [ngClass]="{'is-invalid': submitted && hasError('author')}">
@@ -19,7 +10,7 @@
   </div>
   <div style="margin-top: 10px">
     <input type="submit" nome="acao" value="Salvar" (click)="onSubmit()" />
-    <input type="submit" nome="acao" value="Cancelar" (click)="onCancel()" />
+    <input type="submit" nome="acao" value="Voltar" routerLink="/materias" />
   </div>
 
 </form>

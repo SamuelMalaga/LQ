@@ -15,9 +15,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { RegistroComponent } from './registro/registro.component';
 import { AuthService } from './login/auth.service';
 import { AuthGuard } from './guard/auth.guard';
-import { FormtemplateComponent } from './formtemplate/formtemplate.component';
 import { HomeComponent } from './home/home.component';
-import { FormDebugComponent } from './form-debug/form-debug.component';
 import { DataFormModule } from './data-form/data-form.module';
 import { MateriaModule } from './materia/materia.module';
 import { MateriasFormComponent } from './materia/materias-form/materias-form.component';
@@ -35,9 +33,7 @@ import { SharedModule } from './shared/shared.module';
     MateriasComponent,
     PerfilComponent,
     RegistroComponent,
-    FormtemplateComponent,
     HomeComponent,
-    FormDebugComponent,
     MateriasCadastroComponent,
   ],
   imports: [
@@ -58,7 +54,6 @@ import { SharedModule } from './shared/shared.module';
     MateriasComponent,
     PerfilComponent,
     RegistroComponent,
-    FormtemplateComponent,
     HomeComponent,
     MateriasFormComponent
   ]

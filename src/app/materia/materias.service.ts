@@ -40,5 +40,8 @@ export class MateriasService {
     }
     return this.create(materia);
   }
+  remove(id: any) {
+    return this.httpClient.delete(`${this.API}/${id}`).pipe(take(1))
+  }
   
 }

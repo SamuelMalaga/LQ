@@ -4,10 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 
 
 import { switchMap, map } from 'rxjs/operators';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 
 import { MateriasService } from '../materias.service';
+import { AlertModalService } from '../../shared/alert-modal.service';
 
 
 @Component({
@@ -17,13 +19,15 @@ import { MateriasService } from '../materias.service';
 })
 export class MateriasFormComponent implements OnInit {
 
+  bsModalRef!: BsModalRef;
   form!: FormGroup;
   submitted = false;
 
   constructor(
     public fb: FormBuilder,
     private service: MateriasService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertService: AlertModalService
   ) { }
 
   ngOnInit(): void {
@@ -67,15 +71,30 @@ export class MateriasFormComponent implements OnInit {
   hasError(field: string) {
     return this.form.get(field)?.errors;
   }
+  handleSucess() {
+    this.alertService.showAlertSucess('Matéria criada com sucesso!!');
+  }
+  handleError() {
+    this.alertService.showAlertDanger('Erro ao modificar matéria!');
+  }
 
   onSubmit() {
     this.submitted = true;
     console.log(this.form.value)
     if (this.form.valid) {
       console.log('submit');
-
-      this.service.save(this.form.value).subscribe();
-
+      let msgSucess = 'Matéria criada com sucesso';
+      let msgError = 'Erro ao criar matéria, tente novamente!';
+      if (this.form.value.id) {
+        msgSucess = 'Curso atualizado com sucesso!!';
+        msgError = 'Erro ao aualizar curso, tente novamente!!';
+      }
+      this.service.save(this.form.value).subscribe(
+        sucess => {
+          this.alertService.showAlertSucess(msgSucess);
+        },
+        error => this.alertService.showAlertDanger(msgError)
+      );
     }
   };
   onCancel() {
