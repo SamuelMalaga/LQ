@@ -5,7 +5,6 @@ import { delay, tap, take } from 'rxjs/operators';
 
 
 import { environment } from '../../environments/environment';
-import { alunoCadastro } from './alunoCadastro'
 
 @Injectable({
   providedIn: 'root'

@@ -60,7 +60,7 @@ body {
   border-radius: 15px;
   position: absolute;
   left: 50%;
-  top: 76%;
+  top: 76.5%;
   transform: translate(-50%,-50%);
   text-align: center;
 
@@ -84,10 +84,11 @@ body {
   position: absolute;
   width: auto;
   height: auto;
-  left: 44%;
+  left: 43.5%;
   top: 80%;
   background: none;
   display: flex;
+
 }
   .button button {
     background: #A6EE6E;

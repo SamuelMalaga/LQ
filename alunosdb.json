@@ -1,84 +1,29 @@
 {
   "materias": [
     {
-      "id": 1,
-      "title": "Curso Teste 400415",
-      "author": "typicode 2"
-    },
-    {
-      "id": 2,
-      "title": "Curso Teste 1 4",
-      "author": "typicode"
-    },
-    {
-      "title": "Curso Teste 2",
-      "author": "typicode",
-      "id": 3
-    },
-    {
-      "title": "Curso Teste 3",
-      "author": "nusay",
-      "id": 4
-    },
-    {
       "id": 5,
       "title": "Geografia 4",
       "author": "Carlos"
     },
     {
-      "title": "Matematica",
-      "author": "Maicon",
-      "id": 6
+      "id": 6,
+      "title": "Matematica 5",
+      "author": "Maicon"
     },
     {
-      "title": "Abuble",
-      "author": "SAamre",
-      "id": 7
+      "id": 7,
+      "title": "Biologia",
+      "author": "José Ricardo"
     },
     {
       "id": 8,
-      "title": "dsdasdasd",
-      "author": "asdasdasdasd"
+      "title": " Literartura",
+      "author": "Marcela"
     },
     {
       "id": 9,
-      "title": "dasdasdasd 53523",
-      "author": "asdasdasd"
-    },
-    {
-      "id": 10,
-      "title": "Testes",
-      "author": "o=doois"
-    },
-    {
-      "id": 11,
-      "title": "materiahs",
-      "author": "Profe"
-    },
-    {
-      "id": 12,
-      "title": "esdasda",
-      "author": "asdasdasda"
-    },
-    {
-      "id": 13,
-      "title": "esdasda",
-      "author": "asdasdasda"
-    },
-    {
-      "id": 14,
-      "title": "abu befd",
-      "author": "dasdas"
-    },
-    {
-      "id": 15,
-      "title": " otroteste 4001",
-      "author": " 323123"
-    },
-    {
-      "id": 16,
-      "title": "Teste handle sucess",
-      "author": "Eu mesmo"
+      "title": "Filosofia",
+      "author": "Joao"
     }
   ],
   "alunos": [
@@ -148,6 +93,69 @@
       "senha": "Oitoletr1*",
       "senhaRepeat": "Oitoletr1*",
       "id": 13
+    },
+    {
+      "nome": "dsadasdasd",
+      "email": "usuario@email.com",
+      "senha": "Oitoletr1*",
+      "senhaRepeat": "Oitoletr1*",
+      "id": 14
+    },
+    {
+      "nome": "Samuel",
+      "email": "usuario@email.com",
+      "senha": "Oitoletr1*",
+      "senhaRepeat": "Oitoletr1*",
+      "id": 15
+    },
+    {
+      "nome": "Smuel",
+      "email": "usuario@email.com",
+      "senha": "Oitoletr1*",
+      "senhaRepeat": "Oitoletr1*",
+      "id": 16
+    },
+    {
+      "nome": "sdasd",
+      "email": "usuario@email.com",
+      "senha": "Oitoletr1*",
+      "senhaRepeat": "Oitoletr1*",
+      "id": 17
+    },
+    {
+      "nome": "dsdasd",
+      "email": "usuario@email.com",
+      "senha": "Oitoletr1*",
+      "senhaRepeat": "Oitoletr1*",
+      "id": 18
+    },
+    {
+      "nome": "dsadsda",
+      "email": "usuario@email.com",
+      "senha": "Oitoletr1*",
+      "senhaRepeat": "Oitoletr1*",
+      "id": 19
+    },
+    {
+      "nome": "sdasdas",
+      "email": "usuario@email.com",
+      "senha": "Oitoletr1*",
+      "senhaRepeat": "Oitoletr1*",
+      "id": 20
+    },
+    {
+      "nome": "usuario@email.com",
+      "email": "usuario@email.com",
+      "senha": "Oitoletr1*",
+      "senhaRepeat": "Oitoletr1*",
+      "id": 21
+    },
+    {
+      "nome": "sdasdasd",
+      "email": "usuario@email.com",
+      "senha": "Oitoletr1*",
+      "senhaRepeat": "Oitoletr1*",
+      "id": 22
     }
   ]
 }

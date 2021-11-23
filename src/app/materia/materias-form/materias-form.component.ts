@@ -32,17 +32,6 @@ export class MateriasFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //this.route.params.subscribe(
-    //  (params: any) => {
-    //    const id = params['id'];
-    //    console.log(id);
-    //    const materia$ = this.service.loadByID(id);
-    //    materia$.subscribe(materia => {
-    //      this.updateForm(materia);
-    //    });
-    //  }
-    //);
-
 
     this.route.params
     .pipe(

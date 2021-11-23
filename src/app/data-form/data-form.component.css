@@ -55,7 +55,7 @@ form {
     text-align: center;
   }
 
-  form input[type=submit] {
+  form button {
     background: #A6EE6E;
     border: 1px solid #000000;
     box-sizing: border-box;

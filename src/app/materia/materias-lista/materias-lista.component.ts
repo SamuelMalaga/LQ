@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
 
-import { empty, Observable, Subject } from 'rxjs';
+import { EMPTY, empty, Observable, Subject } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { catchError } from 'rxjs/operators';
+import { catchError, switchMap, take } from 'rxjs/operators';
 
 import { MateriasService } from '../materias.service';
 import { Materia } from '../materia';
@@ -30,8 +30,6 @@ export class MateriasListaComponent implements OnInit {
 
 
   constructor(
-    private modalservice: BsModalService,
-    private http: HttpClient,
     private service: MateriasService,
     private router: Router,
     private route: ActivatedRoute,
@@ -50,7 +48,7 @@ export class MateriasListaComponent implements OnInit {
         catchError(error => {
           console.error(error);
           this.handleError();
-          return empty();
+          return EMPTY;
         })
       );
 
@@ -60,7 +58,20 @@ export class MateriasListaComponent implements OnInit {
   }
   onDelete(materia: any) {
     this.materiaSelecionada = materia;
-    this.deleteModalRef = this.modalservice.show(this.deleteModal, { class: 'modal-sm' });
+    const result$ = this.alertService.showConfirm('Confrimacao', 'Quer remover esse curso?', 'Quero!', 'Não Quero');
+    result$.asObservable()
+      .pipe(
+        take(1),
+        switchMap(result => result ? this.service.remove(materia.id) : EMPTY)
+    )
+      .subscribe(
+        sucess => {
+          this.onRefresh();
+          this.alertService.showAlertSucess('Matéria deletada com sucesso!')
+        },
+        error => this.alertService.showAlertDanger('Erro ao Deletar a Matéria, tente novamente mais tarde.')
+      )
+
   }
   onConfirmDelete() {
     this.service.remove(this.materiaSelecionada.id)
@@ -75,5 +86,8 @@ export class MateriasListaComponent implements OnInit {
   }
   onDeclineDelete() {
     this.deleteModalRef.hide();
+  }
+  onConstruction() {
+    this.alertService.showAlertDanger('Essa funcionalidade ainda está em constução');
   }
 }

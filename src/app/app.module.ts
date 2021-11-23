@@ -20,6 +20,7 @@ import { MateriaModule } from './materia/materia.module';
 import { MateriasFormComponent } from './materia/materias-form/materias-form.component';
 import { MateriasCadastroComponent } from './materias-cadastro/materias-cadastro.component';
 import { SharedModule } from './shared/shared.module';
+import { UploadFileModule } from './upload-file/upload-file.module';
 
 
 
@@ -42,7 +43,8 @@ import { SharedModule } from './shared/shared.module';
     DataFormModule,
     MateriaModule,
     ModalModule.forRoot(),
-    SharedModule
+    SharedModule,
+    UploadFileModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],

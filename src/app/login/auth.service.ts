@@ -1,5 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+
+
+import { AlertModalService } from '../shared/alert-modal.service';
 import { Usuario } from './usuario';
 
 @Injectable({
@@ -11,7 +14,7 @@ export class AuthService {
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private alertService: AlertModalService  ) { }
 
   fazerLogin(usuario: Usuario) {
 
@@ -27,6 +30,8 @@ export class AuthService {
 
     } else {
       this.usuarioAutenticado = false;
+
+      this.alertService.showAlertDanger('Usuário não autenticado');
 
       this.mostrarMenuEmitter.emit(false);
     }

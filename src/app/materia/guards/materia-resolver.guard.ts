@@ -25,10 +25,6 @@ export class MateriaResolverGuard implements Resolve<Materia> {
       title: null as any,
       author: null as any,
     })
-
-
-
-
   }
   canActivate(
     route: ActivatedRouteSnapshot,

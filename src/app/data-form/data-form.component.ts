@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { map, take } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 import { ConfirmedValidator } from './ConfirmedValidator';
 import { AlunoCadastroService } from './aluno-cadastro.service'
+import { AlertModalService } from '../shared/alert-modal.service';
+
 
 @Component({
   selector: 'app-data-form',
@@ -16,13 +18,13 @@ export class DataFormComponent implements OnInit {
 
   formulario!: FormGroup;
 
-  private readonly API = 'http://localhost:3000/alunos'
-
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private service: AlunoCadastroService
-    ,
+    private service: AlunoCadastroService,
+    private router: Router,
+    private alertService: AlertModalService
+    
   ) { }
 
   ngOnInit(): void {
@@ -39,31 +41,17 @@ export class DataFormComponent implements OnInit {
     return this.formulario.controls;
   }
 
-//  onSubmit() {
-//    console.log(this.formulario.value)
-//    if (this.formulario.valid) {
-//      console.log('submit');
-//      this.service.create(this.form.value).subscribe();
-//    }
-//    },
-//        (error: any) => alert('erro'));
-//}}
-  //create(materia: any) {
-  //  return this.httpClient.post(`${this.API}`, materia).pipe(take(1));
-  //}
   onSubmit() {
     console.log(this.formulario.value)
     if (this.formulario.valid) {
       console.log('submit');
-      this.service.create(this.formulario.value).subscribe();
+      this.service.create(this.formulario.value).subscribe(
+        sucess => { this.alertService.showAlertSucess('Cadastro realizado com sucesso!!'); }
+        , error => { this.alertService.showAlertDanger('Erro ao realizar cadastro!'); }
+      );
       this.formulario.reset();
+      this.router.navigate(['']);
     }
-  }
-
-
-  resetar() {
-    console.log('resetado');
-    this.formulario.reset()
   }
   verificaValidTouched(campo: any) {
     return !this.formulario.get(campo)?.valid && !this.formulario.get(campo)?.touched;
